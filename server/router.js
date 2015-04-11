@@ -9,9 +9,10 @@ var rootRedirect = function (req, res) {
 
 module.exports = function (app) {
   app.get('/', rootRedirect);
-  
+
   app.post('/messages/send', messageController.send);
-  
+  app.post('/messages/get', messageController.get);
+
   app.get('/info/add', infoController.getAdd);
   app.post('/info/add', infoController.postAdd);
 };
