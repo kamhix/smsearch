@@ -2,6 +2,8 @@
 
 var bodyParser = require('body-parser');
 var express = require('express');
+var session = require('express-session');
+var flash = require('connect-flash');
 var nunjucks = require('nunjucks');
 var mongoose = require('mongoose');
 var dotenv = require('dotenv');
@@ -15,6 +17,13 @@ if (process.env.NODE_ENV !== 'production') {
   dotenv._getKeysAndValuesFromEnvFilePath('.env.dev');
   dotenv._setEnvs();
 }
+
+app.use(session({
+  secret: process.env.SESSION_SECRET,
+  saveUninitialized: true,
+  resave: true
+}));
+app.use(flash());
 
 app.set('port', (process.env.PORT || 5000));
 app.set('view engine', 'nunjucks');
