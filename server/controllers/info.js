@@ -7,28 +7,36 @@ exports.getAdd = function (req, res, next) {
 };
 
 exports.postAdd = function (req, res, next) {
-  var info = req.body.info;
-  var tags = req.body.tags;
+  var info = req.body.info.trim();
+  var tags = req.body.tags.trim();
 
-  if(!/^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/.test(info)) {
+  if(info === '') {
+    console.log('Vous devez renseigner une information.');
     req.flash('errors', 'Vous devez renseigner une information.');
-  }
-
-  if(!/^[a-z0-9._-]+@[a-z0-9._-]+\.[a-z]{2,6}$/.test(tags)) {
-    req.flash('errors', 'Vous devez renseigner des tags pour la recherche.');
-  }
-
-  if(errors) {
     return res.redirect('back');
   }
 
-  infoService.addInfo(info, tags, function (err) {
+  if(tags === '') {
+    console.log('Vous devez renseigner des tags pour la recherche.');
+    req.flash('errors', 'Vous devez renseigner des tags pour la recherche.');
+    return res.redirect('back');
+  }
+
+  infoService.add(info, tags, function (err) {
     if (err) {
+      console.log(err);
       return next(err);
     }
 
+    console.log('Votre information a bien été ajouté.');
     req.flash('message', 'Votre information a bien été ajouté.');
 
     res.redirect('/message');
+  });
+};
+
+exports.message = function (req, res) {
+  res.render('message.html', {
+    message: req.flash('message')
   });
 };
