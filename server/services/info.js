@@ -6,7 +6,7 @@ exports.add = function (info, tags, callback) {
 
   var newInfo = new Info({
     info: info,
-    tags: tags
+    tags: tags.toLowerCase()
   });
 
   newInfo.save(callback);
