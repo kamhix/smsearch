@@ -1,10 +1,10 @@
 'use strict';
 
 var messageController = require('./controllers/message');
-var demosController = require('./controllers/demos');
+var infoController = require('./controllers/info');
 
 var rootRedirect = function (req, res) {
-  res.send('Hello World !');
+  res.send('Hello World ! Welcome to SM Search.');
 };
 
 module.exports = function (app) {
@@ -12,5 +12,6 @@ module.exports = function (app) {
   
   app.post('/messages/send', messageController.send);
   
-  app.get('/demos/simple', demosController.simple);
+  app.get('/info/add', infoController.getAdd);
+  app.post('/info/add', infoController.postAdd);
 };
