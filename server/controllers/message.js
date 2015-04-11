@@ -28,7 +28,9 @@ exports.get = function (req, res, next) {
       if (err) {
         res.status(400).end();
       }
-      res.status(200).end();
+      console.log(message);
     });
   }
+
+  res.status(200).end();
 }
