@@ -14,7 +14,7 @@ exports.send = function (content, to_number, phone_id, callback) {
         callback(err);
       }
 
-      callback(null, message)
+      callback(null, message);
 
   });
 
