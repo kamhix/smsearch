@@ -33,7 +33,7 @@ mongoose.connect(process.env.MONGODB_URL, function (err) {
 });
 
 app.use(bodyParser.urlencoded({
-  extended: false
+  extended: true
 }));
 
 app.use(function (req, res, next) {
