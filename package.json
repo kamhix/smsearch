@@ -15,7 +15,10 @@
   "license": "BSD",
   "dependencies": {
     "body-parser": "~1.8.1",
+    "bson": "~0.2.12",
+    "dotenv": "^0.4.0",
     "express": "~4.8.7",
+    "mongoose": "~3.8.15",
     "nunjucks": "~1.1.0",
     "telerivet": "~1.1.4"
   }
