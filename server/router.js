@@ -15,4 +15,6 @@ module.exports = function (app) {
 
   app.get('/info/add', infoController.getAdd);
   app.post('/info/add', infoController.postAdd);
+
+  app.get('/message', infoController.message);
 };
