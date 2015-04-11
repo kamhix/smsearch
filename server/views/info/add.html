@@ -4,13 +4,16 @@
   <div>
     <form role="form" action="/info/add" method="POST">
       <h1>Add an information</h1>
+
+      {% include 'partials/alerts.html' %}
+
       <div class="line">
         <label>Information</label>
-        <input type="text" name="sender">
+        <input type="text" name="info">
       </div>  
       <div class="line">
         <label>Tags</label>
-        <input type="text" name="number">
+        <input type="text" name="tags">
       </div>
       <div class="line text-right">
         <input type="submit" value="Send">
