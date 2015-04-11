@@ -26,13 +26,10 @@ nunjucks.configure(app.get('views'), {
   express: app
 });
 
-console.log(process.env.MONGODB_URL);
-
 mongoose.connect(process.env.MONGODB_URL, function (err) {
   if (err) {
     console.log('Mongoose error:', err);
   }
-  console.log('mongod connected');
 });
 
 app.use(bodyParser.urlencoded({
