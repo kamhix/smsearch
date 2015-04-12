@@ -1,0 +1,26 @@
+{% extends 'layout/info.html' %}
+
+{% block content %}
+  <div class="row">
+    <form role="form" action="/info/update/{{info._id}}" method="POST" class="col-sm-6 col-sm-offset-3" id="add-info-form">
+      <h3 class="h4">Mettre à jour l'information</h3>
+
+      {% include 'partials/alerts.html' %}
+
+      <div class="text-left">
+        <label>
+          <textarea rows="8" name="info" id="info" class="form-control" placeholder="Entrez votre information">{{info.info}}</textarea>
+        </label>
+      </div>
+      <div class="text-left">
+        <label>
+          <input type="text" name="tags" id="tags" class="form-control" placeholder="Renseignez vos tags" value="{{info.tags}}">
+        </label>
+      </div>
+      <div class="text-center">
+        <input type="submit" value="Mettre à jour" class="btn btn-primary">
+      </div>
+    </form>
+  </div>
+  <script src="/scripts/server/addInfo.js"></script>
+{% endblock %}
