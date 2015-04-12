@@ -12,6 +12,34 @@ exports.add = function (info, tags, callback) {
   newInfo.save(callback);
 };
 
+exports.list = function (callback) {
+  Info.find({}, callback);
+};
+
+exports.get = function (id, callback) {
+  Info.findOne({_id: id}, callback);
+};
+
+exports.update = function (id, newInfo, newTags, callback) {
+  Info.findOne({_id: id}, function (err, info) {
+    if (err) {
+      return callback(err);
+    }
+
+    if (!info) {
+      return callback(null, null);
+    }
+
+    info.info = newInfo;
+    info.tags = newTags;
+    info.save(callback);
+  });
+};
+
+exports.delete = function (id, callback) {
+  Info.remove({_id: id}, callback);
+};
+
 exports.search = function (message, callback) {
   message = message.toLowerCase();
   message = message.split(' ');
