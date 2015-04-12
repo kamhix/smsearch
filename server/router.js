@@ -4,7 +4,7 @@ var messageController = require('./controllers/message');
 var infoController = require('./controllers/info');
 
 var rootRedirect = function (req, res) {
-  res.send('Hello World ! Welcome to SM Search.');
+  res.render('/index.html');
 };
 
 module.exports = function (app) {
@@ -15,6 +15,6 @@ module.exports = function (app) {
 
   app.get('/info/add', infoController.getAdd);
   app.post('/info/add', infoController.postAdd);
-  
+
   app.get('/message', infoController.message);
 };
