@@ -13,12 +13,12 @@
           </thead>
           <tbody>
             {% for info in list %}
-              <row>
+              <tr>
                 <td class="text-center">{{info.info}}</td>
                 <td class="text-center">{{info.tags}}</td>
                 <td class="text-center"><a href="/info/update/{{info._id}}" class="text-primary">Mettre à jour</a></</td>
                 <td class="text-center"><a href="#" onclick="deleteInfo('{{info._id}}')" class="text-danger" data-toggle="modal" data-target="#deleteModal">Supprimer</a></</td>
-              </row>
+              </tr>
             {% endfor %}
           </tbody>
           <tfoot>
@@ -33,15 +33,6 @@
           <p>Il n'y a aucune information disponible.</p>
         </div>
       {% endif %}
-    </div>
-
-    <div class="modal fade bs-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
-      <div class="modal-dialog modal-sm">
-        <div class="modal-content">
-          <p class="text-right">
-          </p>
-        </div>
-      </div>
     </div>
   </div>
 
@@ -64,6 +55,7 @@
   </div>
 
   <script>
+    document.getElementById('info-list-nav').style.display = 'none';
     var deleteInfo = function (id) {
       document.getElementById('deleteBtn').href = '/info/delete/' + id;
     };
