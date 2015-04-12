@@ -9,14 +9,10 @@ exports.send = function (req, res, next) {
 exports.get = function (req, res, next) {
   var secret = req.body.secret;
 
-  console.log(secret);
-
   if (secret !== process.env.WEBHOOK_SECRET) {
       res.status(403).end();
       return;
   }
-
-  console.log(secret);
 
   if (req.body.event == 'incoming_message') {
 
@@ -24,11 +20,18 @@ exports.get = function (req, res, next) {
     var from_number = req.body.from_number;
     var phone_id = req.body.phone_id;
 
-    messageService.send('Reponse: ' + content, from_number, phone_id, function (err, message) {
+    infoService.search(content, function (err, result) {
       if (err) {
-        res.status(400).end();
+        console.log(err);
       }
-      console.log(message);
+
+      messageService.compose(result, function (message) {
+        messageService.send(message, from_number, phone_id, function (err, message) {
+          if (err) {
+            res.status(400).end();
+          }
+        });
+      });
     });
   }
 

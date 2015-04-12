@@ -23,12 +23,13 @@ exports.send = function (content, to_number, phone_id, callback) {
 
 exports.compose = function (results, callback) {
   var content = [];
-  for (var result in results) {
-    content.push(result.info);
+
+  for (var i = 0; i < results.length; i++) {
+    content.push(results[i].info);
   };
 
   if(content.length === 0) {
-    callback("Aucun resultat trouve.");
+    callback("Aucun resultat trouvé.");
   } else {
     callback(content.join('\n'));
   }

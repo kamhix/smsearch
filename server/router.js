@@ -11,10 +11,13 @@ module.exports = function (app) {
   app.get('/', rootRedirect);
 
   app.post('/messages/send', messageController.send);
-  app.post('/telerivet/webhook', messageController.get);
+  app.post('/messaged/get', messageController.get);
 
   app.get('/info/add', infoController.getAdd);
   app.post('/info/add', infoController.postAdd);
+
+  app.get('/info/try', infoController.getTry);
+  app.post('/info/try', infoController.try);
 
   app.get('/message', infoController.message);
 };
