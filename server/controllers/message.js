@@ -1,7 +1,7 @@
 'use strict';
 
 var messageService = require('../services/message');
-var infoController = require('../controllers/info');
+var infoService = require('../controllers/info');
 
 exports.send = function (req, res, next) {
   res.send("The message was succesfully sent!");
