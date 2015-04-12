@@ -4,13 +4,32 @@
     <meta charset="utf-8">
     <title>Info</title>
     <meta name="description" content="">
-    <meta name="viewport" content="width=device-width">   
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="/bower_components/bootstrap/dist/css/bootstrap.css">
     <link rel="stylesheet" href="/styles/main.css">
+    <script src="/bower_components/jquery/dist/jquery.min.js"></script>
+    <script src="/bower_components/bootstrap/js/tooltip.js"></script>
+    <script src="/bower_components/bootstrap/js/popover.js"></script>
   </head>
   <body>
+
+    {% block nav %}
+    <nav class="navbar navbar-default navbar-static-top" id="header">
+      <div class="container">
+        <div class="navbar-header">
+          <a class="navbar-brand" href="/">
+            SM Search
+          </a>
+        </div>
+      </div>
+    </nav>
+    {% endblock %}
+
     <div class="container">
       {% block content %}
       {% endblock %}
+
+      {% include 'partials/footer.html' %}
     </div>
   </body>
 </html>
